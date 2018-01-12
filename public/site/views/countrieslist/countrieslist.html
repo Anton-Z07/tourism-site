@@ -1,0 +1,26 @@
+<div class="page maintop">
+    <div class="countries" ng-show="listCtrl.showCountries">
+        <div class="item" ng-repeat="item in listCtrl.countries">
+            <div class="head">
+                <div class="countries-flags"><img alt="" src="{{ listCtrl.baseUrl }}{{ item.flag.files[0].path }}" class="flags-on-contries">
+                </div>
+                <div class="title"><a ui-sref="arealist({countryAlias: item.id })">{{ item.name }}</a></div>
+                <span class="flags-1-countries"></span>
+            </div>
+            <div ng-repeat="file in item.image.files | filter: {size: '4'}">
+                <img alt="" src="{{ listCtrl.baseUrl }}{{ file.path }}" class="image-countries-city">
+            </div>
+            <div class="text" ng-repeat="area in listCtrl.populars | filter: {area_id: item.id}">
+                <div class="popular-region" ng-if="area.regions.length > 0">
+                    <span>Популярные регионы</span>
+                    <a ui-sref="countrypage({countryAlias: region.id })" ng-repeat="region in area.regions">{{region.name}}</a>
+                </div>
+                <div class="popular-city" ng-if="area.cities.length > 0">
+                    <span>Популярные города</span>
+                    <a ui-sref="countrypage({countryAlias: city.id })" ng-repeat="city in area.cities">{{city.name}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ui-view></div>

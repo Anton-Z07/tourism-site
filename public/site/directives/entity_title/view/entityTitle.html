@@ -1,0 +1,25 @@
+<div ng-controller="EntityTitleController as etCtrl" ng-show="etCtrl.showTitle">
+    <div class="entity-title">
+        <div class="dosttext-head">
+            <div class="dosttext-title-str">
+                {{etCtrl.entityInfo.name}}
+            </div>
+            <div ng-show="etCtrl.entityInfo.alias.length > 0" class="dosttext-desc-str">
+                {{etCtrl.entityInfo.alias}}
+            </div>
+            <div class="optional-str-dosttext">
+                <div><span class="eyesbig-icon"></span>{{etCtrl.entityInfo.view_count}}</div>
+                <div><span class="commentsbig-icon"></span>{{etCtrl.entityInfo.comment_count}}</div>
+            </div>
+            <div class="likes-oncitypost">
+                <div class="btn-grp likes" ng-if="etCtrl.showWasHere">
+                    <a href="" id="like">Мне нравится <span class="ng-binding">{{etCtrl.entityInfo.like_count}}</span></a>
+                    <a href="" id="iwashere">Я тут был <span class="ng-binding">{{etCtrl.entityInfo.view_count}}</span></a>
+                </div>
+                <a href="#" id="like" ng-if="!etCtrl.showWasHere">Понравилось<span>{{etCtrl.entityInfo.like_count}}</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="progress-wrapper" ng-show="etCtrl.isLandmark">
+    </div>
+</div>

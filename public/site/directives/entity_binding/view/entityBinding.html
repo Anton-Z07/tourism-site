@@ -1,0 +1,7 @@
+<div class="city-countries-breadcumbs" ng-controller="EntityBindingController as ebCtrl">
+    <a ng-repeat="area in ebCtrl.bind_areas | filter: {area_type: '0'}" ui-sref="countrypage({countryAlias: area.id })">{{area.name}}</a>
+    <span ng-if="ebCtrl.bind_areas.length > 1"> — </span>
+    <a ng-repeat="area in ebCtrl.bind_areas | filter: {area_type: '1'}" ui-sref="countrypage({countryAlias: area.id })">{{area.name}}</a>
+    <span ng-if="ebCtrl.bind_areas.length > 2"> — </span>
+    <a ng-repeat="area in ebCtrl.bind_areas | filter: {area_type: '2'}" ui-sref="countrypage({countryAlias: area.id })">{{area.name}}</a>
+</div>

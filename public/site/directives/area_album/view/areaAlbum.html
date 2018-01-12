@@ -1,0 +1,9 @@
+<div class="upload-photo-block demo-block" ng-controller="areaAlbumController as aACtrl">
+    <div class="upload-list-photo">
+        <img ng-repeat="file in aACtrl.area.image.files | filter: {size: '4'}" ng-src="{{aACtrl.baseUrl}}{{file.path}}">
+    </div>
+    <div class="upload-list-down">
+        <a id="add-photo-on-countries-btn" href="">+ Добавить фото</a>
+        <a id="all-photo-on-countries-btn" href="">Все фото</a>
+    </div>
+</div>

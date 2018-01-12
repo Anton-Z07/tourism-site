@@ -1,0 +1,80 @@
+<div id="filter-and-tags"   >
+    <div class="line-1">
+        <div class="flags">
+            <a ui-sref="countrypage({countryAlias: countryCtrl.generalInfo.id })">
+                <img alt="" ng-src="{{ countryCtrl.baseUrl }}{{ countryCtrl.generalInfo.flag.files[0].path }}" width="83px">
+            </a>
+        </div>
+
+        <div ng-if="countryCtrl.generalInfo.upper.length == 0" class="title">
+            Страна
+        </div>
+        <div ng-if="countryCtrl.generalInfo.upper.length == 1" class="title">
+            <a ui-sref="countrypage({countryAlias: countryCtrl.generalInfo.upper[0].id })">{{countryCtrl.generalInfo.upper[0].name}}</a>
+        </div>
+        <div ng-if="countryCtrl.generalInfo.upper.length == 2" class="title">
+            <a class="area-chain-link" ng-repeat="upper in countryCtrl.generalInfo.upper | filter: {area_type: '0'}" ui-sref="countrypage({countryAlias: upper.id })">{{upper.name}}</a>
+            —
+            <a class="area-chain-link" ng-repeat="upper in countryCtrl.generalInfo.upper | filter: {area_type: '1'}" ui-sref="countrypage({countryAlias: upper.id })">{{upper.name}}</a>
+        </div>
+
+        <div class="name">
+            <a ui-sref="countrypage({countryAlias: countryCtrl.generalInfo.id })">{{ countryCtrl.generalInfo.name }}</a>
+        </div>
+        <div class="icon-map"></div>
+        <div ng-if="countryCtrl.generalInfo.area_type == 0" class="region-and-city-map"><a ui-sref="arealist({countryAlias: countryCtrl.generalInfo.id })">Регионы и города</a></div>
+    </div>
+    <div class="line-2">
+        <div class="btn-grp likes">
+            <a href="" id="like">Мне нравится <span>{{ countryCtrl.generalInfo.like_count }}</span></a>
+            <a href="" id="iwashere">Я тут был <span>{{ countryCtrl.generalInfo.look_count }}</span></a>
+        </div>
+        <div class="btn-grp likes-after">
+            <a ui-sref="countrypage.general({generalType: 'detail' })" ui-sref-active="active" id="obshee-svedenia active" class="country-info-btn">
+                <span class="icon-bshee-svedenia"></span>
+                Общие сведения
+            </a>
+            <a ui-sref="countrypage.general({generalType: 'history' })" ui-sref-active="active" id="story-btn" class="country-info-btn">
+                <span class="icon-story"></span>
+                История
+            </a>
+            <a ui-sref="countrypage.general({generalType: 'transport' })" ui-sref-active="active" id="transport-btn" class="country-info-btn">
+                <span class="icon-transport"></span>
+                Транспорт
+            </a>
+        </div>
+        <a ng-show="countryCtrl.generalInfo.area_type == 2" ui-sref="countrypage.landmark({v: 'vicinity' })" id="places-btn">
+            <span class="icon-places"></span>
+            Окрестности
+            <span class="value">{{ countryCtrl.generalInfo.vicinity_count }}</span>
+        </a>
+    </div>
+    <div class="line-3">
+        <div class="btn-grp line-filters">
+            <a ui-sref="countrypage.landmark({v: 'all' })" ui-sref-active="active" id="" class="dostoprimechatelnosti-btn">
+                <span class="icon-dostoprimechatelnosti-filter"></span>
+                Достопримечательности
+                <span class="value">{{ countryCtrl.generalInfo.landmark_count }}</span>
+            </a>
+            <a ui-sref="countrypage.entityList({entityName: 'people' })" ui-sref-active="active" class="vel-people-btn">
+                <span class="icon-vel-people-filter"></span>
+                Великие люди
+                <span class="value">{{ countryCtrl.generalInfo.people_count }}</span>
+            </a>
+            <a href="" class="events-btn"><span class="icon-events-filter"></span>События<span
+                    class="value">0</span></a>
+            <a ui-sref="countrypage.entityList({entityName: 'kitchen' })" ui-sref-active="active" class="kitchen-btn">
+                <span class="icon-kitchen-filter"></span>
+                Кухня
+                <span class="value">{{ countryCtrl.generalInfo.kitchen_count }}</span>
+            </a>
+            <a ui-sref="countrypage.entityList({entityName: 'feature' })" ui-sref-active="active" class="fishki-btn">
+                <span class="icon-fishki-filter"></span>
+                Фишки
+                <span class="value">{{ countryCtrl.generalInfo.feature_count }}</span>
+            </a>
+            <a href="#" class="blogs-btn"><span class="icon-blogs-filter"></span>Блоги<span
+                    class="value">0</span></a>
+        </div>
+    </div>
+</div>

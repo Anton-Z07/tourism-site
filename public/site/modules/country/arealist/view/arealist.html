@@ -1,0 +1,48 @@
+<div id="panel-countries-content" ng-show="arealistCtrl.showGrid">
+    <div class="title">Страна</div>
+    <div class="name">
+        <a ui-sref="countrypage({countryAlias: arealistCtrl.generalInfo.id })">{{arealistCtrl.generalInfo.name}}</a>
+    </div>
+    <div ng-hide="arealistCtrl.generalInfo.lower.length == 1 && arealistCtrl.generalInfo.lower[0].area_type == '2'">
+        <div class="border-countries-title">
+            <img alt="" ng-src="{{arealistCtrl.baseUrl}}/upload/images/border-countries.png" class="3rows-on-contries" width="152px">
+        </div>
+        <div class="countries-sorting-title">
+            Упорядочить города
+        </div>
+        <div class="countries-sorting-block">
+            <a class="left active" href="" ng-click="arealistCtrl.orderBy(0)">По регионам<span></span></a>
+            <a class="right" href="" ng-click="arealistCtrl.orderBy(1)"><span></span>По алфавиту</a>
+        </div>
+        <div class="shadow-block-countries-panel"></div>
+    </div>
+
+    <div ng-show="!arealistCtrl.sortByName" id="container" class="citys-on-countries">
+            <masonry masonry-options="{ transitionDuration: '0' }" reload-on-show ng-show="arealistCtrl.showGrid" class="js-masonry-fullpage" item-selector=".city-on-countries-list">
+            <div masonry-brick class="city-on-countries-list" ng-show="lower.area_type == 1" ng-repeat="lower in arealistCtrl.generalInfo.lower">
+                <span><a ui-sref="countrypage({countryAlias: lower.id })">{{lower.name}}</a></span>
+                <ul reload-on-show ng-show="lower.lower" ng-repeat="lowlower in lower.lower">
+                    <li reload-on-show ng-show="lowlower.area_type == 2"><a ui-sref="countrypage({countryAlias: lowlower.id })">{{lowlower.name}}</a></li>
+                </ul>
+            </div>
+        </masonry>
+    </div>
+
+    <div ng-show="arealistCtrl.sortByName" id="container" class="citys-on-countries">
+            <masonry masonry-options="{ transitionDuration: '0' }" reload-on-show ng-show="arealistCtrl.showGrid" class="js-masonry-fullpage" item-selector=".city-on-countries-list">
+            <div masonry-brick class="city-on-countries-list" ng-repeat="letter in arealistCtrl.cities">
+                <span>{{letter.letter}}</span>
+                <ul reload-on-show ng-repeat="city in letter.cities">
+                    <li reload-on-show><a ui-sref="countrypage({countryAlias: city.id })">{{city.name}}</a></li>
+                </ul>
+            </div>
+        </masonry>
+    </div>
+</div>
+
+<script type="text/javascript-lazy">
+    $('.countries-sorting-block > a').on('click', function(){
+        $('.countries-sorting-block > a').removeClass('active');
+        $(this).addClass('active');
+    });
+</script>

@@ -1,0 +1,109 @@
+<div ng-controller="mainController as mainCtrl">
+    <div area-album></div>
+
+    <div class="left-column">
+    <div ng-show="mainCtrl.showGrid" class="map-on-countries">
+        <iframe width="100%" height="270" frameborder="0" style="border:0" ng-src="{{mainCtrl.googleMapsEmbedUrl}}"></iframe>
+    </div>
+
+    <!-- in HTML -->
+    <div class="editors-choice js-isotope" ng-show="mainCtrl.stickedArts.length > 0">
+    <h2>Выбор редакции</h2>
+        <masonry masonry-options="{ transitionDuration: '0' }" reload-on-show ng-show="mainCtrl.showSticked" class="js-masonry" item-selector=".item-isotope-cart">
+            <div masonry-brick ng-repeat="element in mainCtrl.stickedArts" class="item-isotope-cart">
+                <a ui-sref="countrypage.entityPage({entityItemId: element.id, entityName: element.entity})">
+                    <span class="icon-{{element.entity}}"></span>
+                    <img class="preview" ng-src="{{mainCtrl.baseUrl}}{{element.image.files[2].path}}">
+                    <div class="cart-title">{{element.name}}</div>
+                    <div class="cart-description"></div>
+                    <div class="cart-location"><span class="icon-tabl"></span>{{element.area[0].name}}</div>
+                    <div class="cart-optional">
+                        <div><span class="eyes-icon"></span>{{element.view_count}}</div>
+                        <div><span class="like-icon"></span>{{element.like_count}}</div>
+                        <div><span class="comments-icon"></span>{{element.comment_count}}</div>
+                    </div>
+                </a>
+            </div>
+    </masonry>
+    </div>
+
+    <div class="recent-articles editors-choice js-isotope" ng-show="mainCtrl.recentArts.length > 0">
+    <h2>Все статьи</h2>
+        <masonry masonry-options="{ transitionDuration: '0' }" reload-on-show ng-show="mainCtrl.showGrid" class="js-masonry recent-articles-masorny" item-selector=".item-isotope-cart">
+            <div masonry-brick ng-repeat="element in mainCtrl.recentArts" class="item-isotope-cart">
+                <a ui-sref="countrypage.entityPage({entityItemId: element.id, entityName: element.entity})">
+                    <span class="icon-{{element.entity}}"></span>
+                    <img class="preview" ng-src="{{mainCtrl.baseUrl}}{{element.image.files[2].path}}">
+                    <div class="cart-title">{{element.name}}</div>
+                    <div class="cart-description"></div>
+                    <div class="cart-location"><span class="icon-tabl"></span>{{element.area[0].name}}</div>
+                    <div class="cart-optional">
+                        <div><span class="eyes-icon"></span>{{element.view_count}}</div>
+                        <div><span class="like-icon"></span>{{element.like_count}}</div>
+                        <div><span class="comments-icon"></span>{{element.comment_count}}</div>
+                    </div>
+                </a>
+            </div>
+        </masonry>
+    </div>
+    <div class="more-button" ng-show="mainCtrl.showGrid" style="margin-top: -70px;">
+        <a href="" id="getBlogs" class="">
+            {{mainCtrl.moreButtonText}}
+        </a>
+    </div>
+    </div>
+    <div class="sidebar">
+        <div class="sidebar-right">
+            <div class="sidebar-category-link">
+                <ul>
+                    <li><a id="bilets-cat" href=""><span></span>Билеты</a></li>
+                    <li><a id="hotels-cat" href=""><span></span>Отели</a></li>
+                    <li><a id="strahovki-cat" href=""><span></span>Страховки</a></li>
+                    <li><a id="auto-cat" href=""><span></span>Авто</a></li>
+                    <li><a id="ekscursii-cat" href=""><span></span>Экскурсии</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <!--<div class="banner"><a href=""><img alt="" src="./images/banner-sidebar.png"></a></div>-->
+        <div class="sidebar-right-bottom">
+            <div class="sidebar-whowillhere">
+                <div class="sidebarTitle">Здесь побывали</div>
+                <ul>
+                    <li><a href=""><span><img alt="" src="./images/avatar-mini.png"></span>Барак Обама</a></li>
+                    <li><a href=""><span><img alt="" src="./images/avatar-mini.png"></span>Барак Обама</a></li>
+                    <li><a href=""><span><img alt="" src="./images/avatar-mini.png"></span>Барак Обама</a></li>
+                    <li><a href=""><span><img alt="" src="./images/avatar-mini.png"></span>Барак Обама</a></li>
+                    <li><a href=""><span><img alt="" src="./images/avatar-mini.png"></span>Барак Обама</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="sidebar-curs">
+            <div class="">
+                Местный курс 1 € = 45 руб.
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript-lazy">
+    var difHeight = 710,
+        blockHeight = difHeight,
+        masonryHeight;
+
+    $('.recent-articles').css('height', blockHeight + 'px');
+
+    $('.more-button').click(function(){
+        masonryHeight = $('.recent-articles-masorny').height();
+
+        blockHeight = blockHeight + difHeight;
+
+        if (blockHeight >= masonryHeight)
+        {
+            blockHeight = masonryHeight;
+            $('.more-button').hide('slow');
+        }
+
+        $('.recent-articles').animate({height: blockHeight+'px'}, 500);
+    });
+</script>

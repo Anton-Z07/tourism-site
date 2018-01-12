@@ -1,0 +1,126 @@
+<div ng-init="showMap = false">
+        <div class="line-4" style="margin: 20px 0;" ng-show="!lmCtrl.isVicinity">
+            <div class="panel-countries-content-after-line">
+                <div class="simple-filters-onecount">
+                    <div class="btn-grp left" ng-show="!showMap">
+                        <ul id="cbp-tm-menu" class="cbp-tm-menu">
+                            <li>
+                                Упорядочить  <a href="" ng-click="lmCtrl.orderBy(2)">по популярности</a>
+                                <ul class="cbp-tm-submenu">
+                                    <li><a href="" ng-click="lmCtrl.orderBy(3)">по новизне</a></li>
+                                    <li><a href="" ng-click="lmCtrl.orderBy(1)">по id (test)</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="btn-grp right">
+                        <a href="" id="" class="filter-btn-dost" ng-show="!showMap" ng-click="showFilter = !showFilter">Фильтры</a>
+                        <a href="" id="" class="show-onmap-btn" ng-click="showMap = !showMap;" ng-show="!showMap">Показать на карте<span class="icon-map"></span></a>
+                        <a href="" id="" class="close-onmap-btn" ng-click="showMap = !showMap" ng-show="showMap">Закрыть карту<span class="icon-close"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div ng-show="showFilter && !showMap" class="landmark-filters">
+        <div class="categories">
+            <div class="period">Период</div>
+            <div class="category-filters">
+                <a href="" class="category-filter-btn" ng-click="lmCtrl.addFilter(2)"><span class="icon-filter-2"></span>Культовое сооружение</a>
+                <a href="" class="category-filter-btn" ng-click="lmCtrl.addFilter(5)"><span class="icon-filter-5"></span>Светское сооружение</a>
+                <a href="" class="category-filter-btn" ng-click="lmCtrl.addFilter(1)"><span class="icon-filter-1"></span>Крепость</a>
+                <a href="" class="category-filter-btn" ng-click="lmCtrl.addFilter(6)"><span class="icon-filter-6"></span>Музей и театр</a>
+                <a href="" class="category-filter-btn" ng-click="lmCtrl.addFilter(4)"><span class="icon-filter-4"></span>Природный памятник</a>
+                <a href="" class="category-filter-btn" ng-click="lmCtrl.addFilter(3)"><span class="icon-filter-3"></span>Квартал</a>
+            </div>
+        </div>
+        <div class="filter-search-block-2" ng-hide="lmCtrl.lowerFilters.length == 0">
+            <a href="" class="category-subfilter-btn" ng-repeat="subFilter in lmCtrl.lowerFilters" ng-click="lmCtrl.addFilter(subFilter.id)">{{subFilter.name}}</a> <!-- class active для подсветки -->
+        </div>
+    </div>
+
+    <div ng-if="!showMap" class="landmarks-list-page-body">
+        <div class="left-column">
+            <div class="countries-dost">
+                <masonry ng-show="lmCtrl.showGrid" masonry-options="{ transitionDuration: '0' }" reload-on-show class="js-masonry" item-selector=".item-isotope-cart">
+                    <div masonry-brick ng-repeat="landmark in lmCtrl.landmarks" class="item-isotope-cart">
+                        <a ui-sref="countrypage.entityPage({entityItemId: landmark.id, entityName: 'landmark'})">
+                            <div ng-show="landmark.property.length" class="landmark-icon">
+                                <img ng-src="{{lmCtrl.baseUrl}}{{landmark.property[0].icon.files[1].path}}">
+                            </div>
+                            <img class="preview" ng-src="{{lmCtrl.baseUrl}}{{landmark.image.files[2].path}}">
+
+                            <div class="cart-title">{{landmark.name}}</div>
+                            <!--<div class="cart-description">{{landmark.build_year}}</div>-->
+                            <div class="cart-location">
+                                <span class="icon-tabl"></span>
+                                {{landmark.area[0].name}}
+                            </div>
+                            <div class="cart-optional">
+                                <div><span class="eyes-icon"></span>{{landmark.view_count}}</div>
+                                <div><span class="like-icon"></span>{{landmark.like_count}}</div>
+                                <div><span class="comments-icon"></span>{{landmark.comment_count}}</div>
+                            </div>
+                        </a>
+                    </div>
+                </masonry>
+            </div>
+            <div class="more-button" ng-show="
+                !lmCtrl.isVicinity &&
+                lmCtrl.landmarks.length > 0 &&
+                (lmCtrl.landmarks.length % lmCtrl.pagesize == 0)
+            " style="margin-top: -160px;">
+                <a href="" ng-click="lmCtrl.loadMore()" id="getBlogs" class="">
+                    {{lmCtrl.moreButtonText}}
+                </a>
+            </div>
+        </div>
+        <div class="sidebar">
+            <!--<div class="banner"><a href="#"><img alt="" ng-src="../../../../static/images/banner-sidebar.png"></a></div>-->
+        </div>
+    </div>
+    <div ng-if="!lmCtrl.isVicinity && !showMap && lmCtrl.entity_text.length != 0" ng-show="lmCtrl.showGrid" class="hrtext-oncountries" style="margin-top: -80px;">
+        <div class="on-block" ng-bind-html="lmCtrl.entity_text">
+        </div>
+    </div>
+    <div ng-if="!showMap && lmCtrl.relatedItems.length > 0" class="also_be_interesting-oncountries">
+        <h3>{{lmCtrl.alsoBeIntresting}}</h3>
+        <div class="also_be_interesting js-isotope">
+                <div ng-repeat="landmark in lmCtrl.relatedItems" class="item-isotope-cart">
+                    <a ui-sref="countrypage.entityPage({entityItemId: landmark.id, entityName: 'landmark'})">
+                        <div ng-show="landmark.property.length" class="landmark-icon">
+                            <img ng-src="{{lmCtrl.baseUrl}}{{landmark.property[0].icon.files[1].path}}">
+                        </div>
+                        <img class="preview" ng-src="{{lmCtrl.baseUrl}}{{landmark.image.files[2].path}}">
+
+                            <div class="cart-title">{{landmark.name}}</div>
+                            <!--<div class="cart-description">{{landmark.build_year}}</div>-->
+                            <div class="cart-location"><span class="icon-tabl"></span>{{landmark.area[0].name}}</div>
+                            <div class="cart-optional">
+                                <div><span class="eyes-icon"></span>{{landmark.view_count}}</div>
+                                <div><span class="like-icon"></span>{{landmark.like_count}}</div>
+                                <div><span class="comments-icon"></span>{{landmark.comment_count}}</div>
+                            </div>
+                        </a>
+                    </div>
+        </div>
+    </div>
+    <div ng-if="showMap" class="map-container">
+        <map></map>
+    </div>
+</div>
+
+<script type="text/javascript-lazy">
+    $('.category-filter-btn').click(function(){
+        $('.category-filter-btn').removeClass('active');
+        $(this).addClass('active');
+    });
+
+    $('.filter-search-block-2').on('click', '.category-subfilter-btn', function(){
+        $(this).toggleClass('active');
+    });
+</script>
+<!--<script type="text/javascript-lazy" src="../../../../static/js/cbpTooltipMenu.min.js"></script>-->
+<script>
+    var menu = new cbpTooltipMenu( document.getElementById( 'cbp-tm-menu' ) );
+</script>

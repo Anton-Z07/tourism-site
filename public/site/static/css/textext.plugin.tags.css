@@ -1,0 +1,45 @@
+.text-core .text-wrap .text-tags {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+position: relative;
+width: 100%;
+padding: 3px 35px 3px 0px;
+cursor: text;
+float: left;
+}
+.text-core .text-wrap .text-tags.text-tags-on-top {
+  z-index: 2;
+}
+.text-core .text-wrap .text-tags .text-tag {
+  float: left;
+}
+.text-core .text-wrap .text-tags .text-tag .text-button {
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+position: relative;
+float: left;
+color: #000;
+margin: 0 10px 10px 0;
+cursor: pointer;
+float: left;
+border: 0;
+font-size: 12px;
+background: #ffffff;
+padding: 8px 15px;
+font-family: pfdindisplaypro-light;
+}
+.text-core .text-wrap .text-tags .text-tag .text-button a.text-remove {
+left: 9px;
+top: 1px;
+display: block;
+width: 12px;
+height: 12px;
+background: url(../images/sprite.png) no-repeat rgba(255, 255, 255, 0) -223px -389px;
+float: right;
+position: relative;
+}

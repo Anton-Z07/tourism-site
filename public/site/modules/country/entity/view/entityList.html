@@ -1,0 +1,73 @@
+<div ng-if="entListCtrl.entityName == 'kitchen' && entListCtrl.entity.length > 0" class="panel-countries-content-after-line demo-block">
+    <div class="kindsoffood-kitchen-filter">
+        <a class="disheskitchen active" href=""><span></span><div class="disheskitchen-icon"></div><div class="linkname">Блюда</div></a>
+        <a class="productskitchen active" href=""><span></span><div class="productskitchen-icon"></div><div class="linkname">Продукты</div></a>
+        <a class="drinkskitchen" href=""><span></span><div class="drinkskitchen-icon"></div><div class="linkname">Напитки</div></a>
+    </div>
+    <div class="sorting-block-on-off-cityorregion">
+        <a class="left" href=""><div class="citykitchen-icon"></div>Город<span></span></a>
+        <a href="" class="right active"><span></span><div class="regionkitchen-icon"></div>Регион</a>
+    </div>
+</div>
+<div class="left-column">
+    <div class="entity-list">
+        <masonry masonry-options="{ transitionDuration: '0' }" reload-on-show ng-show="entListCtrl.showGrid" class="js-masonry" item-selector=".item-isotope-cart">
+            <div masonry-brick ng-repeat="element in entListCtrl.entity" class="item-isotope-cart">
+                <a ui-sref="countrypage.entityPage({entityItemId: element.id, entityName: entListCtrl.entityName})">
+
+                    <img class="preview" ng-src="{{entListCtrl.baseUrl}}{{element.web_image.files[2].path}}">
+
+                    <div class="cart-title">{{element.name}}</div>
+                    <div class="cart-description"></div>
+                    <div class="cart-location"><span class="icon-tabl"></span>{{element.area[0].name}}</div>
+                    <div class="cart-optional">
+                        <div><span class="eyes-icon"></span>{{element.view_count}}</div>
+                        <div><span class="like-icon"></span>{{element.like_count}}</div>
+                        <div><span class="comments-icon"></span>{{element.comment_count}}</div>
+                    </div>
+                </a>
+            </div>
+        </masonry>
+    </div>
+    <div class="more-button" ng-if="entListCtrl.entity.length > entListCtrl.pagesize" ng-show="entListCtrl.entity.length > 0 && (entListCtrl.entity.length % entListCtrl.pagesize == 0)">
+        <a href="" id="getBlogs" class="">
+            {{entListCtrl.moreButtonText}}
+        </a>
+    </div>
+</div>
+<div class="sidebar">
+    <!--<div class="banner"><a href="#"><img alt="" ng-src="../../../../static/images/banner-sidebar.png"></a></div>-->
+</div>
+<div ng-if="entListCtrl.entity_text.length > 0" class="hrtext-oncountries">
+    <div class="on-block" ng-bind-html="entListCtrl.entity_text">
+    </div>
+</div>
+<div ng-if="entListCtrl.relatedItems.length > 0" class="also_be_interesting-oncountries">
+    <h3>{{entListCtrl.alsoBeIntresting}}</h3>
+    <div class="also_be_interesting js-isotope">
+        <div ng-repeat="relatedEntity in entListCtrl.relatedItems" class="item-isotope-cart">
+            <a ui-sref="countrypage.entityPage({entityItemId: relatedEntity.id, entityName: entListCtrl.entityName})">
+                <div ng-show="relatedEntity.property.length" class="landmark-icon">
+                    <img ng-src="{{entListCtrl.baseUrl}}{{relatedEntity.property[0].icon.files[1].path}}">
+                </div>
+                <img class="preview" ng-src="{{entListCtrl.baseUrl}}{{relatedEntity.image.files[2].path}}">
+
+                <div class="cart-title">{{relatedEntity.name}}</div>
+                <div class="cart-description">{{relatedEntity.build_year}}</div>
+                <div class="cart-location"><span class="icon-tabl"></span>{{relatedEntity.area[0].name}}</div>
+                <div class="cart-optional">
+                    <div><span class="eyes-icon"></span>{{relatedEntity.view_count}}</div>
+                    <div><span class="like-icon"></span>{{relatedEntity.like_count}}</div>
+                    <div><span class="comments-icon"></span>{{relatedEntity.comment_count}}</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript-lazy">
+    $('.more-button').click(function(){
+        $('.entity-list').css('max-height', '100%');
+        $('.more-button').hide('slow');
+    });
+</script>

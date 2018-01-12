@@ -1,0 +1,190 @@
+<style>
+.full img {
+display: block;
+ margin-left: auto;
+ margin-right: auto;
+padding:8px;
+ border:solid;
+ border-color: #dddddd #aaaaaa #aaaaaa #dddddd;
+ border-width: 1px 2px 2px 1px;
+ background-color:white;
+
+}
+.full img:hover    {
+
+
+width: 500px;
+height: 500px;
+
+}
+
+.soob-block textarea
+    {
+        border: 1px solid #EEEEEE;
+        box-shadow: 1px 1px 0 #DDDDDD;
+        display: block;
+        font-family: 'Marck Script',cursive;
+        font-size: 22px;
+        line-height: 50px;
+        margin: 2% auto;
+        padding: 11px 20px 0 70px;
+        resize: none;
+        height: 189px;
+        width: 630px;
+
+        background-image: -moz-linear-gradient(top , transparent, transparent 49px,#E7EFF8 0px), -moz-radial-gradient(4% 50%, circle closest-corner, #f5f5f5, #f5f5f5 39%, transparent 0%), -moz-radial-gradient(3.9% 46% , circle closest-corner, #CCCCCC, #CCCCCC 43.5%, transparent 0%);
+        background-image: -webkit-linear-gradient(top , transparent, transparent 49px,#E7EFF8 0), -webkit-radial-gradient(4% 50%, circle closest-corner, #f5f5f5, #f5f5f5 39%, transparent 0%), -webkit-radial-gradient(3.9% 46%, circle closest-corner, #cccccc, #cccccc 43.5%, transparent 0%);
+
+        -webkit-background-size:  100% 50px;
+        background-size: 100% 50px;
+    }
+
+
+.graph {background-color: #cecece; width: 510px; height:15px; padding:1px}
+        .graph>div {width: 100%; height:100%; border-width: 1px 0 0 1px; border-style: solid; border-color: #eedfdc #d0c0c1 #d0c0c1 #eedfdc;}
+        .bar {background-color: #2fade9; width: 40%; height: 85%; border: 1px solid #475a69;}
+        .bar>div {height:80%; border-width: 1px 0 0 1px; border-style: solid; border-color: #687DE3 #687DE3 #687DE3 #687DE3;}
+    
+
+
+
+</style>
+
+<div entity-binding></div>
+<div entity-title class="area-header"></div>
+<div class="landmark-page-body">
+    <div class="category-filters" ng-if="entPageCtrl.entityInfo.property.length > 0">
+        <a ng-repeat="proper in entPageCtrl.entityInfo.property" ng-if="proper.id < 10" href="" class="category-filter-area">
+            <span class="icon-filter-{{proper.id}}"></span>
+            {{proper.name}} - "Век" - "Тип"
+        </a>
+    </div>
+
+
+<div class="left-column">
+
+<!---------------------------------------------------------------->
+ 
+ <div class="dost-photo-block demo-block" ng-controller="mainController as mainCtrl">
+
+
+
+     <div >
+
+
+        <img  height="380" width="510" ng-src="http://vz70331.eurodir.ru/{{entPageCtrl.entityInfo.image.files[4].path}}">
+ <img  width="180" height="380" ng-src="http://vz70331.eurodir.ru/{{entPageCtrl.entityInfo.image.files[3].path}}">
+
+<div class="graph">
+        <div>
+            <div class="bar"> 
+                <div> </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+        </div>
+    <div class="upload-list-down"ng-controller="mainController as mainCtrl">
+
+      <input type="file" id="fileElem" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)" />
+
+            <a id="add-photo-on-countries-btn" href="">+ Добавить фото</a>
+        <a id="all-photo-on-countries-btn" href="">{{entPageCtrl.entityInfo.image.files.length}} фото</a>
+    </div>
+
+
+
+</div>
+<!---------------------------------------------------------------->
+<div class="full"> 
+
+<div  ng-if="entPageCtrl.entityInfo.text.length > 0" ng-bind-html="entPageCtrl.entityInfo.text"></div>
+   <div  ng-if="entPageCtrl.entityInfo.detail.length > 0" ng-bind-html="entPageCtrl.entityInfo.detail"></div>
+   <div  ng-if="entPageCtrl.entityInfo.full_text.length > 0" ng-bind-html="entPageCtrl.entityInfo.full_text"></div>
+</div>
+</div>
+
+<!-------------------------------------------------------------------->
+<div class="sidebar-right">
+<div class="sidebar">
+<embed width="220" height="360" src="http://bannerspiration.com/uploads/flash/microsoft_160x600.swf" type="application/x-shockwave-flash"/>
+</div>
+<div class="sidebar-right-bottom">
+
+
+<div class="events-on-home">
+  <div class="Title">Достопремечательности рядом</div>
+  <div class="event" ng-repeat="landmark in entPageCtrl.closestLandmarks">
+    <a ui-sref="countrypage.entityPage({entityItemId: landmark.id, entityName: 'landmark'})">
+      <img ng-src="http://vz70331.eurodir.ru/{{landmark.image.files[3].path}}"/>
+      <div class="right">
+        <div class="event-title">{{ landmark.name }}</div>
+        <!-- <time>1 мая 2014</time> -->
+        <div class="event-location">{{ landmark.area[2].name }} - {{ landmark.area[1].name }} - {{ landmark.area[0].name }}</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+
+
+
+</div>
+</div>
+<!-------------------------------------------------------------------->
+ <div class="full-width-block soob-block">
+      <div class="soob-block">
+            <h2><a href="index.html#">Вам также будет интересно</a></h2>
+            <div class="item">
+               <a href="index.html#">
+                  <div class="left">
+
+<img width="45" ng-src="http://vz70331.eurodir.ru/{{entPageCtrl.entityInfo.image.files[4].path}}"/></div>
+                  <div class="right">
+                     <div class="soob-title">Туристические услуги в Париже!</div>
+                     <time>12 января 2014 12:15</time>
+                  </div>
+               </a>
+            </div>
+            <div class="item">
+               <a href="index.html#">
+                  <div class="left"><span class="soob-2-icon"></span></div>
+                  <div class="right">
+                     <div class="soob-title">Туристические услуги в Париже услуги паром</div>
+                     <time>12 января 2014 12:15</time>
+                  </div>
+               </a>
+            </div>
+            <div class="item">
+               <a href="index.html#">
+                  <div class="left"><span class="soob-3-icon"></span></div>
+                  <div class="right">
+                     <div class="soob-title">Туристические услуги в Париже!</div>
+                     <time>12 января 2014 12:15</time>
+                  </div>
+               </a>
+            </div>
+            <div class="item">
+               <a href="index.html#">
+                  <div class="left"><span class="soob-4-icon"></span></div>
+                  <div class="right">
+                     <div class="soob-title">Туристические услуги в Париже!</div>
+                     <time>12 января 2014 12:15</time>
+                  </div>
+               </a>
+            </div>
+
+      </div>
+           </div>
+<!---------------------------------------------------------------->
+
+ <div class="full-width-block soob-block">
+      <div class="soob-block">
+            <h2><a href="index.html#">Комментарии</a></h2>
+<textarea rows="4" cols="50">
+Оставте ваши комментарии и мнения .......
+</textarea>
+      </div>

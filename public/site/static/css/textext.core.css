@@ -1,0 +1,9 @@
+.text-core {
+  position: relative;
+}
+.text-core .text-wrap {
+  position: absolute;
+}
+.text-core .text-wrap textarea,
+.text-core .text-wrap input {
+}

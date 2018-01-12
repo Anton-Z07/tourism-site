@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Туристический портал. Достопримечательности Италии, Испании, Франции, Швейцарии.</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+    <!--<link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">-->
+    <!--<script type="text/javascript" src="./static/js/jquery.min.js"></script>-->
+
+
+
+
+    <script src="https://maps.google.com/maps/api/js?sensor=false"></script>
+
+    <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/jquery-bridget/jquery.bridget.js"></script>
+    <script src="bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+    <script src="bower_components/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-masonry/angular-masonry.js"></script>
+
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/angular-hyper-resource/angular-hyper-resource.js"></script>
+
+    <!-- google maps -->
+    <!-- build:js scripts/ng-map.min.js -->
+    <script src="bower_components/ngmap/app/scripts/app.js"></script>
+    <script src="bower_components/ngmap/app/scripts/directives/map_controller.js"></script>
+    <script src="bower_components/ngmap/app/scripts/directives/map.js"></script>
+    <script src="bower_components/ngmap/app/scripts/directives/marker.js"></script>
+    <script src="bower_components/ngmap/app/scripts/directives/shape.js"></script>
+    <script src="bower_components/ngmap/app/scripts/services/geo_coder.js"></script>
+    <script src="bower_components/ngmap/app/scripts/services/navigator_geolocation.js"></script>
+    <script src="bower_components/ngmap/app/scripts/services/attr2_options.js"></script>
+    <!-- endbuild -->
+
+    <!--main script-->
+    <script src="app.js"></script>
+
+    <!--config-->
+    <script src="config/main.js"></script>
+    <script src="config/phrases.js"></script>
+
+    <!--ui-route states-->
+    <script src="router/states.js"></script>
+
+    <!-- helpers -->
+    <script src="helper/angular-loadscript.js"></script>
+
+    <!-- directives -->
+    <script src="directives/entity_binding/controller/entityBindingController.js"></script>
+    <script src="directives/entity_binding/entityBindingDirective.js"></script>
+    <script src="directives/entity_binding/service/entityBindingService.js"></script>
+
+    <script src="directives/entity_title/controller/entityTitleController.js"></script>
+    <script src="directives/entity_title/entityTitleDirective.js"></script>
+    <script src="directives/entity_title/service/entityTitleService.js"></script>
+
+    <script src="directives/area_album/controller/areaAlbumController.js"></script>
+    <script src="directives/area_album/areaAlbumDirective.js"></script>
+
+    <!--data sources-->
+    <script src="dataSources/countries.js"></script>
+    <script src="dataSources/country/generalInfo.js"></script>
+    <script src="modules/country/landmark/service/landmarks.js"></script>
+    <script src="modules/country/landmark/service/landmarkInfo.js"></script>
+    <script src="modules/country/landmark/service/landmarksHal.js"></script>
+    <script src="modules/country/landmark/service/landmarkProperties.js"></script>
+
+    <!--controllers-->
+    <script src="controllers/countrieslistCtrl.js"></script>
+    <script src="controllers/countrypageCtrl.js"></script>
+    <script src="modules/country/landmark/controller/landmarksCtrl.js"></script>
+    <script src="modules/country/landmark/controller/landmarkpageCtrl.js"></script>
+
+    <!-- views -->
+    <script src="views/countrieslist/countrieslist.js"></script>
+    <script src="views/countrypage/countrypage.js"></script>
+    <script src="modules/country/landmark/landmarkpage.js"></script>
+
+    <!-- modules, new app structure -->
+    <!-- area main page -->
+    <script src="modules/country/main/main.js"></script>
+    <script src="modules/country/main/controller/mainController.js"></script>
+
+    <!-- arealist -->
+    <script src="modules/country/arealist/arealist.js"></script>
+    <script src="modules/country/arealist/controller/arealistController.js"></script>
+
+    <!-- general info (detail, history, transport -->
+    <script src="modules/country/general/general.js"></script>
+    <script src="modules/country/general/service/general.js"></script>
+    <script src="modules/country/general/controller/generalController.js"></script>
+
+    <!-- entities: kitchen, people, feature of area -->
+    <script src="modules/country/entity/entity.js"></script>
+    <script src="modules/country/entity/service/entityService.js"></script>
+    <script src="modules/country/entity/service/entityListService.js"></script>
+    <script src="modules/country/entity/controller/entityPageController.js"></script>
+    <script src="modules/country/entity/controller/entityListController.js"></script>
+
+    <script src="components/version/version.js"></script>
+    <script src="components/version/version-directive.js"></script>
+    <script src="components/version/interpolate-filter.js"></script>
+
+    <!-- CSS -->
+    <link href="./static/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="./static/css/grid.css"/>
+
+    <!-- other JS -->
+    <script src="./static/js/modernizr.custom.grid.js"></script>
+    <!-- Jquery -->
+    <script type="text/javascript" src="./static/js/jcarousel.responsive.js"></script>
+    <!-- Jquery carousel настройки -->
+    <script type="text/javascript" src="./static/js/jquery.jcarousel.min.js"></script>
+    <!-- Jquery carousel плагин -->
+    <script type="text/javascript" src="./static/js/jquery.slides.min.js"></script>
+    <!-- Slider -->
+    <script type="text/javascript" src="./static/js/jquery.pickmeup.js"></script>
+    <!-- Tooltip menu -->
+    <script type="text/javascript" src="./static/js/cbpTooltipMenu.min.js"></script>
+    <!-- Calendar plg -->
+    <script src="./static/js/jquery-slidescrollpanel.js"></script>
+
+    <script src="./static/js/jquery-slidescrollpanel.js"></script>
+</head>
+<body>
+
+<div class="page-wrap">
+    <header id="other-header">
+        <div class="header-line-1">
+            <!-- logo -->
+            <div class="logo-and-title">
+                <a href="./index.html">
+                    <div class="logo"><img src="./static/images/logo.png" alt="Культ-Турист"/></div>
+                    <div class="site-title">Культ-Турист</div>
+                </a>
+            </div>
+            <!-- Head menu -->
+            <div class="menu-and-search">
+                <nav class="menu" role="navigation">
+                    <div class="">
+                        <ul>
+                            <li id="" ui-sref-active="active"><a ui-sref="countries">Страны</a></li>
+                            <li id="" ui-sref-active="active"><a href="">Блоги</a></li>
+                            <li id="" ui-sref-active="active"><a href="">Маршруты</a></li>
+                            <li id="" ui-sref-active="active"><a href="">Сообщества</a></li>
+                            <li id="" ui-sref-active="active"><a href="">Сувениры</a></li>
+                            <li id="" ui-sref-active="active"><a href="">Конкурсы</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- End Head menu -->
+                <!-- Search form -->
+                <div class="search-head-link">
+                    <a href=""></a>
+                </div>
+                <div class="img-head-link">
+                    <a href=""></a>
+                </div>
+            </div>
+            <div class="enter">
+                <div class="clearfix">
+                    <button class="md-trigger" data-modal="modal-2">Вход</button>
+                    |
+                    <button class="md-trigger" data-modal="modal-1">Регистрация</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Banner on head-->
+    <div class="banner-top">
+        <div class="banner-top-body">
+        <a href="">
+            <img alt="" src="./static/images/banner-top.png">
+        </a>
+        </div>
+    </div>
+    <!-- END Banner -->
+    <div class="page-block">
+        <div class="page">
+
+            <div ui-view></div>
+
+        </div>
+    </div>
+
+<!-- Footer -->
+<footer>
+    <div class="shadow-block"></div>
+    <!-- Footer menu -->
+    <nav class="menu" role="navigation">
+        <div class="">
+            <ul>
+                <li id="" class=""><a href="">Главная</a></li>
+                <li id="" class=""><a href="./news — 1.html">Новости</a></li>
+                <li id="" class=""><a href="">Глоссарий</a></li>
+                <li id="" class=""><a href="">FAQ</a></li>
+                <li id="" class=""><a href="">Карта сайта</a></li>
+                <li id="" class=""><a href="">Реклама</a></li>
+                <li id="" class=""><a href="">Сотрудничество</a></li>
+                <li id="" class=""><a href="">Задать вопрос</a></li>
+                <li id="" class=""><a href="">Партнерство</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!--END Footer menu -->
+    <div class="social">
+        <ul>
+            <li class=""><a href=""><img alt="" src="./static/images/social/lj.png"/></a></li>
+            <li class=""><a href=""><img alt="" src="./static/images/social/vk.png"/></a></li>
+            <li class=""><a href=""><img alt="" src="./static/images/social/facebook.png"/></a></li>
+            <li class=""><a href=""><img alt="" src="./static/images/social/twitter.png"/></a></li>
+        </ul>
+    </div>
+    <div class="marketplace">
+        <ul>
+            <li class=""><a href=""><img alt="" src="./static/images/appstore.png"/></a></li>
+            <li class=""><a href=""><img alt="" src="./static/images/google.png"/></a></li>
+        </ul>
+    </div>
+    <div class="bottom-line">
+        <div class="blockfooter">
+            <div class="appkode-copyright">
+            </div>
+            <div class="copyright">
+                <p>© 2009-2015 Cult-turist.ru ­— Туристический портал</p>
+            </div>
+            <!-- Metrika -->
+            <div class="metrika">
+                <img alt="" src="./static/images/metrika.jpg"/>
+            </div>
+            <!-- END Metrika -->
+        </div>
+    </div>
+</footer>
+</div>
+
+<!-- END Footer -->
+<!-- LoginForm -->
+<script src="./static/js/modernizr.custom.modal.js"></script>
+<!-- LoginForm js -->
+<div class="md-modal md-effect-1" id="modal-1">
+    <div class="md-content">
+        <div>
+            <div id="login">
+                <div class="flip">
+                    <div class="form-signup">
+                        <fieldset>
+                            <h1></h1>
+
+                            <h2>Присоединяйся к нам</h2>
+
+                            <div class="social-login">
+                                <a id="auth-vk" href=""><img alt="" src="./static/images/social/vk.png"></a>
+                                <a id="auth-fb" href=""><img alt="" src="./static/images/social/facebook.png"></a>
+                                <a id="auth-tw" href=""><img alt="" src="./static/images/social/twitter.png"></a>
+                                <a id="auth-od" href=""><img alt="" src="./static/images/social/odn.png"></a>
+                            </div>
+                            <p class="login-msg"></p>
+
+                            <form>
+                                <input type="text" placeholder="Никнейм" onfocus="placeholder='';"
+                                       onblur="placeholder='Никнейм';" required/>
+                                <input type="email" placeholder="Ваш E-mail" onfocus="placeholder='';"
+                                       onblur="placeholder='Ваш E-mail';" required/>
+                                <input type="password" placeholder="Пароль" onfocus="placeholder='';" onblur="Пароль';"
+                                       required/>
+                                <input type="submit" value="Зарегистрироваться"/>
+                            </form>
+                            <div class="bottom-btn-in"><a href="" class="flipper">Вход</a></div>
+                        </fieldset>
+                    </div>
+                    <div class="form-login">
+                        <fieldset>
+                            <h1></h1>
+
+                            <h2>Присоединяйся к нам</h2>
+
+                            <div class="social-login">
+                                <a id="auth-vk" href=""><img alt="" src="./static/images/social/vk.png"></a>
+                                <a id="auth-fb" href=""><img alt="" src="./static/images/social/facebook.png"></a>
+                                <a id="auth-tw" href=""><img alt="" src="./static/images/social/twitter.png"></a>
+                                <a id="auth-od" href=""><img alt="" src="./static/images/social/odn.png"></a>
+                            </div>
+                            <form>
+                                <input type="email" placeholder="Email или Никнейм" required/>
+                                <input type="password" placeholder="Пароль" required/>
+                                <input type="submit" value="Вход"/>
+                            </form>
+                            <div class="bottom-btn"><a href="" class="flipper">Регистрация.</a><a class="lost-pass-btn"
+                                                                                                   href="">Забыли
+                                пароль?</a></div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="md-modal md-effect-1" id="modal-2">
+    <button class="md-close"></button>
+
+</div>
+<div class="md-overlay">
+    <button class="md-close"></button>
+</div>
+<!--<script src="./static/js/modal.classie.js"></script>-->
+<!-- LoginForm js -->
+<!--<script src="./static/js/modalEffects.js"></script>-->
+<!-- LoginForm js -->
+<!--<script src="./static/js/login-reg.js"></script>-->
+<!-- LoginForm js -->
+<!--<script type="text/javascript" src="./static/js/sliderScript.js"></script>-->
+<!-- Calendar plg -->
+
+<!-- END LoginForm -->
+
+<!--<div>Angular seed app: v<span app-version></span></div>-->
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+</body>
+</html>

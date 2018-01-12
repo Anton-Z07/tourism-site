@@ -1,0 +1,25 @@
+<div entity-binding></div>
+<div class="left-column">
+    <div entity-title></div>
+    <div>
+        <div class="category-filters">
+            <a ng-repeat="proper in lmpageCtrl.landmarkInfo.property" ng-if="proper.id < 10" href="" class="category-filter-area">
+                <span class="icon-filter-{{proper.id}}"></span>
+                {{proper.name}}
+            </a>
+        </div>
+        <div style="width: 100%">
+            <div ng-bind-html="lmpageCtrl.landmarkInfo.full_text"></div>
+        </div>
+    </div>
+</div>
+<!--<div class="sidebar">-->
+    <!--<div class="date-of-event-sidebar">-->
+        <!--Ближайшая дата проведения-->
+        <!--<span>12 янв по 25 мар, 2014 г.</span>-->
+    <!--</div>-->
+    <!--<div class="sobitie-namesidebar">-->
+        <!--Ежегодно третий-->
+        <!--понедельник пятого месяца-->
+    <!--</div>-->
+<!--</div>-->

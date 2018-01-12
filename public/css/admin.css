@@ -1,0 +1,208 @@
+html {
+    height: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+#topmenu {
+    margin-bottom: 10px;
+}
+.root {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+}
+.singin {
+    width: 400px;
+    height: 250px;
+    left: 37.5%;
+    position: absolute;
+    top: 35%;
+    text-align: center;
+}
+.singin .singinCell {
+    height: 30%;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+}
+.singin .singinCell p {
+    line-height: 30px;
+}
+#grid .k-toolbar
+{
+    min-height: 27px;
+    padding: 1.3em;
+}
+.toolbar {
+    float: right;
+}
+table.k-editor {
+    height:90%;
+}
+/*.k-state-active {
+    padding:0 !important;
+}*/
+.k-edit-form-container {
+    width:100%;
+}
+.k-edit-form-container .k-edit-buttons {
+    border: none;
+}
+.k-window > div.k-popup-edit-form {
+    padding: 0;
+}
+#panelbar {
+    display: none;
+}
+.pan-in {
+    padding: 0 !important;
+}
+.pan-in .cellpin{
+    float: left;
+    width: 30%;
+    margin: 1%;
+}
+.pan-in .cellpin .rightpin{
+    float: right;
+}
+.pan-in .cellpin .leftpin{
+    float: left;
+    text-align: center;
+    vertical-align: middle;
+}
+.pan-in .cellpin .leftpin, .pan-in .cellpin .rightpin {
+}
+.clear {
+    height: 1;
+    float: none;
+    clear: both;
+}
+
+.relations .listView {
+    padding: 0;
+    min-height: 400px;
+}
+.relations .sideContainer {
+    float: left;
+}
+.relations .item {
+    float: left;
+    position: relative;
+    width: 120px;
+    height: 80px;
+    margin: 0;
+    padding: 5px;
+}
+.relations .item img {
+    width: 120px;
+    height: 80px;
+}
+.relations .item span {
+    margin: 0;
+    max-width: 96px;
+    overflow: hidden;
+    line-height: 1em;
+    font-size: .8em;
+    font-weight: normal;
+}
+.relations .item p {
+    width: 120px;
+    height: 80px;
+    position: absolute;
+    top: 5px;
+    margin: 0;
+    padding: 0;
+    line-height: 18px;
+    vertical-align: middle;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+}
+.relations .item:hover p {
+    background-color: rgba(0,0,0,0.75);
+    transition: background .2s linear, color .2s linear;
+    -moz-transition: background .2s linear, color .2s linear;
+    -webkit-transition: background .2s linear, color .2s linear;
+    -o-transition: background .2s linear, color .2s linear;
+}
+.relations .pivotSlide {
+    text-align: center;
+}
+.relations .pivotSlide label {
+    display: block;
+}
+.relations .pivotSlide>div {
+    float: left;
+    width: 46%;
+    margin: 2px 2%;
+}
+.relations .pivotSlide .k-edit-field {
+    float: none;
+    width: auto;
+}
+.relations .item .edit-buttons {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    z-index: 1000;
+}
+.relations .item .edit-buttons a {
+    text-decoration:none;
+    display: block;
+    width: 15px;
+    height: 15px;
+    cursor: alias;
+}
+.relations .item .skatch {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    z-index: 1000;
+}
+.relations .item .skatch.system {
+    background: red;
+}
+.customUpload {
+    
+}
+.customUpload .imageContainer {
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    background-color: rgba(120, 120, 120, 0.5);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.relations .tools {
+    padding: 2px 0;
+}
+.k-listview:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.loadingcontainer {
+    min-height: 200px;
+    width: 100%;
+    background: #ededed;
+}
+.loadingcontainer.loading {
+    background: transparent url('/images/loading.gif') scroll no-repeat center center;
+}
+.cimg {
+    margin: 10px 20px;
+}       
+.cimg img {
+
+}        
+.cimg p{
+    margin: 0;
+    font-size: 12px;
+}
